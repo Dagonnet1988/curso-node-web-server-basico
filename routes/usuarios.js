@@ -4,7 +4,18 @@ export const router = Router();
 import { check } from 'express-validator';
 
 import { emailExiste, esRolValido, existeUsuarioPorId } from '../helpers/db-validators.js';
-import { validarCampos } from '../middlewares/validar-campos.js';
+
+import { 
+    validarCampos,
+    validarJWT,
+    esAdminRol,
+    tieneRole
+} from "../middlewares/index.js"
+
+
+// import { esAdminRol, tieneRole } from '../middlewares/validar-roles.js';
+// import { validarCampos } from '../middlewares/validar-campos.js';
+// import { validarJWT } from '../middlewares/validar-jwt.js';
 
 import {    usuariosDelete,
             usuariosGet,
@@ -33,6 +44,9 @@ router.post('/', [
 ],usuariosPost);
 
 router.delete('/:id',[
+    validarJWT,
+    // esAdminRol,
+    tieneRole('ADMIN_ROLE', 'VENTAS_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ),
     validarCampos
