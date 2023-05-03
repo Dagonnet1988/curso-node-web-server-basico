@@ -1,5 +1,13 @@
+import { Categoria, Producto, Usuario } from '../models/index.js';
 import { Role } from '../models/role.js';
-import { Usuario } from '../models/usuario.js';
+
+
+const emailExiste = async ( correo  = '')  => {
+    const existeEmail = await Usuario.findOne({ correo });
+    if (existeEmail) {
+        throw new Error (`El correo ${correo} ya está registrado.`);
+    }
+}
 
 const esRolValido =  async ( rol = '') => {
     const existeRol = await Role.findOne({ rol });
@@ -8,10 +16,17 @@ const esRolValido =  async ( rol = '') => {
     }
 }
 
-const emailExiste = async ( correo  = '')  => {
-    const existeEmail = await Usuario.findOne({ correo });
-    if (existeEmail) {
-        throw new Error (`El correo ${correo} ya está registrado.`);
+const existeCategoriaPorId = async ( id )  => {
+    const existeCategoria = await Categoria.findById( id );
+    if (!existeCategoria) {
+        throw new Error (`El id '${id}' no existe`);
+    }
+}
+
+const existeProductoPorId = async ( id )  => {
+    const existeProducto = await Producto.findById( id );
+    if (!existeProducto) {
+        throw new Error (`El  '${id}' no existe`);
     }
 }
 
@@ -23,7 +38,9 @@ const existeUsuarioPorId = async ( id )  => {
 }
 
 
-export {esRolValido,
-        emailExiste, 
+export {emailExiste, 
+        esRolValido,
+        existeCategoriaPorId,
+        existeProductoPorId,
         existeUsuarioPorId
 }
