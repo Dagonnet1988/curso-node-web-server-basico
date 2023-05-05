@@ -1,8 +1,7 @@
 import { response } from "express";
 import { Usuario } from "../models/usuario.js";
 import bcryptjs from "bcryptjs"
-import { generarJWT } from "../helpers/generar-jwt.js";
-import { googleVerify } from "../helpers/google-verify.js";
+import { generarJWT, googleVerify } from "../helpers/index.js";
 
 const login = async (req, res = response) => {
 

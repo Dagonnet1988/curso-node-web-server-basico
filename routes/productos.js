@@ -4,7 +4,7 @@ import { check } from 'express-validator';
 import { esAdminRol, validarCampos, validarJWT } from '../middlewares/index.js';
 import { crearProducto, obtenerProductos,
         obtenerProducto, borrarProducto, actualizarProducto } from '../controllers/productos.js';
-import { existeCategoriaPorId, existeProductoPorId } from '../helpers/db-validators.js';
+import { existeCategoriaPorId, existeProductoPorId } from '../helpers/index.js';
 
 // todas las productos - publico
 routera.get('/', obtenerProductos);

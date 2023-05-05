@@ -5,7 +5,7 @@ import { esAdminRol, validarCampos, validarJWT } from '../middlewares/index.js';
 import { actualizarCategoria, borrarCategoria,
     crearCategoria, obtenerCategoria, obtenerCategorias 
     } from '../controllers/categorias.js';
-import { existeCategoriaPorId } from '../helpers/db-validators.js';
+import { existeCategoriaPorId } from '../helpers/index.js';
 
 // todas las categorias - publico
 rout.get('/', obtenerCategorias);

@@ -3,7 +3,7 @@ import { Router } from 'express';
 export const router = Router();
 import { check } from 'express-validator';
 
-import { emailExiste, esRolValido, existeUsuarioPorId } from '../helpers/db-validators.js';
+import { emailExiste, esRolValido, existeUsuarioPorId } from '../helpers/index.js';
 
 import { 
     validarCampos,

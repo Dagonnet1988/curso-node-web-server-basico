@@ -29,7 +29,8 @@ const ProductoSchema = new Schema ({
         required: [true, 'La categoria es obligatoria']
     },
     descripcion : {type: String},
-    disponible: { type: Boolean, default: true }
+    disponible: { type: Boolean, default: true },
+    img: { type: String }
 }); 
 
 ProductoSchema.methods.toJSON = function() {
